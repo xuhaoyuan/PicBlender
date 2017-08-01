@@ -1,0 +1,671 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C5C0AEE1E61117C00D3F53A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0AED1E61117C00D3F53A /* main.m */; };
+		1C5C0AF11E61117C00D3F53A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0AF01E61117C00D3F53A /* AppDelegate.m */; };
+		1C5C0AF71E61117C00D3F53A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5C0AF51E61117C00D3F53A /* Main.storyboard */; };
+		1C5C0AF91E61117C00D3F53A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5C0AF81E61117C00D3F53A /* Assets.xcassets */; };
+		1C5C0AFC1E61117C00D3F53A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5C0AFA1E61117C00D3F53A /* LaunchScreen.storyboard */; };
+		1C5C0B071E61117C00D3F53A /* K_BlenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B061E61117C00D3F53A /* K_BlenderTests.m */; };
+		1C5C0B121E61117C00D3F53A /* K_BlenderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B111E61117C00D3F53A /* K_BlenderUITests.m */; };
+		1C5C0B221E611B3000D3F53A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B211E611B3000D3F53A /* ViewController.m */; };
+		1C5C0B2C1E611D2700D3F53A /* AblumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B2B1E611D2700D3F53A /* AblumTool.m */; };
+		1C5C0B301E61D44700D3F53A /* PicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B2F1E61D44700D3F53A /* PicCollectionViewCell.m */; };
+		1C5C0B371E61E1A000D3F53A /* SelectedAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B361E61E1A000D3F53A /* SelectedAlbumView.m */; };
+		44E31A3607E1D2C34071EB20 /* libPods-K Blender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF205F3454104232825B0BC /* libPods-K Blender.a */; };
+		95E218911F305E94001B294C /* SelectedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E218901F305E94001B294C /* SelectedAlbumCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1C5C0B031E61117C00D3F53A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C5C0AE11E61117C00D3F53A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C5C0AE81E61117C00D3F53A;
+			remoteInfo = "K Blender";
+		};
+		1C5C0B0E1E61117C00D3F53A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C5C0AE11E61117C00D3F53A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C5C0AE81E61117C00D3F53A;
+			remoteInfo = "K Blender";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1C5C0AE91E61117C00D3F53A /* K Blender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K Blender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C5C0AED1E61117C00D3F53A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1C5C0AEF1E61117C00D3F53A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1C5C0AF01E61117C00D3F53A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1C5C0AF61E61117C00D3F53A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1C5C0AF81E61117C00D3F53A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C5C0AFB1E61117C00D3F53A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C5C0AFD1E61117C00D3F53A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C5C0B021E61117C00D3F53A /* K BlenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "K BlenderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C5C0B061E61117C00D3F53A /* K_BlenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_BlenderTests.m; sourceTree = "<group>"; };
+		1C5C0B081E61117C00D3F53A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C5C0B0D1E61117C00D3F53A /* K BlenderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "K BlenderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C5C0B111E61117C00D3F53A /* K_BlenderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_BlenderUITests.m; sourceTree = "<group>"; };
+		1C5C0B131E61117C00D3F53A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C5C0B201E611B3000D3F53A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1C5C0B211E611B3000D3F53A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1C5C0B2A1E611D2700D3F53A /* AblumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AblumTool.h; sourceTree = "<group>"; };
+		1C5C0B2B1E611D2700D3F53A /* AblumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AblumTool.m; sourceTree = "<group>"; };
+		1C5C0B2E1E61D44700D3F53A /* PicCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicCollectionViewCell.h; sourceTree = "<group>"; };
+		1C5C0B2F1E61D44700D3F53A /* PicCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicCollectionViewCell.m; sourceTree = "<group>"; };
+		1C5C0B341E61D6BE00D3F53A /* UI_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI_Header.h; sourceTree = "<group>"; };
+		1C5C0B351E61E1A000D3F53A /* SelectedAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedAlbumView.h; sourceTree = "<group>"; };
+		1C5C0B361E61E1A000D3F53A /* SelectedAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedAlbumView.m; sourceTree = "<group>"; };
+		95E2188F1F305E94001B294C /* SelectedAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedAlbumCell.h; sourceTree = "<group>"; };
+		95E218901F305E94001B294C /* SelectedAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedAlbumCell.m; sourceTree = "<group>"; };
+		9E98F409DEAA3BF1CB40DA4F /* Pods-K Blender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-K Blender.release.xcconfig"; path = "Pods/Target Support Files/Pods-K Blender/Pods-K Blender.release.xcconfig"; sourceTree = "<group>"; };
+		F7F29C01DFB134FFDF062D66 /* Pods-K Blender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-K Blender.debug.xcconfig"; path = "Pods/Target Support Files/Pods-K Blender/Pods-K Blender.debug.xcconfig"; sourceTree = "<group>"; };
+		FBF205F3454104232825B0BC /* libPods-K Blender.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-K Blender.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C5C0AE61E61117C00D3F53A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E31A3607E1D2C34071EB20 /* libPods-K Blender.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5C0AFF1E61117C00D3F53A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5C0B0A1E61117C00D3F53A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C5C0AE01E61117C00D3F53A = {
+			isa = PBXGroup;
+			children = (
+				1C5C0AEB1E61117C00D3F53A /* K Blender */,
+				1C5C0B051E61117C00D3F53A /* K BlenderTests */,
+				1C5C0B101E61117C00D3F53A /* K BlenderUITests */,
+				1C5C0AEA1E61117C00D3F53A /* Products */,
+				7BE06C7B0AF8563ADDA007FA /* Pods */,
+				434BA4EAED4AD12E7239EFD5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1C5C0AEA1E61117C00D3F53A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0AE91E61117C00D3F53A /* K Blender.app */,
+				1C5C0B021E61117C00D3F53A /* K BlenderTests.xctest */,
+				1C5C0B0D1E61117C00D3F53A /* K BlenderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C5C0AEB1E61117C00D3F53A /* K Blender */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0AEF1E61117C00D3F53A /* AppDelegate.h */,
+				1C5C0AF01E61117C00D3F53A /* AppDelegate.m */,
+				1C5C0B1F1E611B3000D3F53A /* HomeVC */,
+				1C5C0AF51E61117C00D3F53A /* Main.storyboard */,
+				1C5C0B231E611B6500D3F53A /* Tool */,
+				1C5C0AF81E61117C00D3F53A /* Assets.xcassets */,
+				1C5C0AFA1E61117C00D3F53A /* LaunchScreen.storyboard */,
+				1C5C0AFD1E61117C00D3F53A /* Info.plist */,
+				1C5C0AEC1E61117C00D3F53A /* Supporting Files */,
+			);
+			path = "K Blender";
+			sourceTree = "<group>";
+		};
+		1C5C0AEC1E61117C00D3F53A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0AED1E61117C00D3F53A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1C5C0B051E61117C00D3F53A /* K BlenderTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0B061E61117C00D3F53A /* K_BlenderTests.m */,
+				1C5C0B081E61117C00D3F53A /* Info.plist */,
+			);
+			path = "K BlenderTests";
+			sourceTree = "<group>";
+		};
+		1C5C0B101E61117C00D3F53A /* K BlenderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0B111E61117C00D3F53A /* K_BlenderUITests.m */,
+				1C5C0B131E61117C00D3F53A /* Info.plist */,
+			);
+			path = "K BlenderUITests";
+			sourceTree = "<group>";
+		};
+		1C5C0B1F1E611B3000D3F53A /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0B2D1E611E6D00D3F53A /* View */,
+				1C5C0B201E611B3000D3F53A /* ViewController.h */,
+				1C5C0B211E611B3000D3F53A /* ViewController.m */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		1C5C0B231E611B6500D3F53A /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0B341E61D6BE00D3F53A /* UI_Header.h */,
+				1C5C0B2A1E611D2700D3F53A /* AblumTool.h */,
+				1C5C0B2B1E611D2700D3F53A /* AblumTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		1C5C0B2D1E611E6D00D3F53A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C5C0B2E1E61D44700D3F53A /* PicCollectionViewCell.h */,
+				1C5C0B2F1E61D44700D3F53A /* PicCollectionViewCell.m */,
+				1C5C0B351E61E1A000D3F53A /* SelectedAlbumView.h */,
+				1C5C0B361E61E1A000D3F53A /* SelectedAlbumView.m */,
+				95E2188F1F305E94001B294C /* SelectedAlbumCell.h */,
+				95E218901F305E94001B294C /* SelectedAlbumCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		434BA4EAED4AD12E7239EFD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBF205F3454104232825B0BC /* libPods-K Blender.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7BE06C7B0AF8563ADDA007FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F7F29C01DFB134FFDF062D66 /* Pods-K Blender.debug.xcconfig */,
+				9E98F409DEAA3BF1CB40DA4F /* Pods-K Blender.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C5C0AE81E61117C00D3F53A /* K Blender */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C5C0B161E61117C00D3F53A /* Build configuration list for PBXNativeTarget "K Blender" */;
+			buildPhases = (
+				A0B02027EC53A298D33D10B2 /* [CP] Check Pods Manifest.lock */,
+				1C5C0AE51E61117C00D3F53A /* Sources */,
+				1C5C0AE61E61117C00D3F53A /* Frameworks */,
+				1C5C0AE71E61117C00D3F53A /* Resources */,
+				E4F5DFCEC143813D2098784F /* [CP] Embed Pods Frameworks */,
+				986B121B43C68A4A030C22CB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "K Blender";
+			productName = "K Blender";
+			productReference = 1C5C0AE91E61117C00D3F53A /* K Blender.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1C5C0B011E61117C00D3F53A /* K BlenderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C5C0B191E61117C00D3F53A /* Build configuration list for PBXNativeTarget "K BlenderTests" */;
+			buildPhases = (
+				1C5C0AFE1E61117C00D3F53A /* Sources */,
+				1C5C0AFF1E61117C00D3F53A /* Frameworks */,
+				1C5C0B001E61117C00D3F53A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C5C0B041E61117C00D3F53A /* PBXTargetDependency */,
+			);
+			name = "K BlenderTests";
+			productName = "K BlenderTests";
+			productReference = 1C5C0B021E61117C00D3F53A /* K BlenderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1C5C0B0C1E61117C00D3F53A /* K BlenderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C5C0B1C1E61117C00D3F53A /* Build configuration list for PBXNativeTarget "K BlenderUITests" */;
+			buildPhases = (
+				1C5C0B091E61117C00D3F53A /* Sources */,
+				1C5C0B0A1E61117C00D3F53A /* Frameworks */,
+				1C5C0B0B1E61117C00D3F53A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C5C0B0F1E61117C00D3F53A /* PBXTargetDependency */,
+			);
+			name = "K BlenderUITests";
+			productName = "K BlenderUITests";
+			productReference = 1C5C0B0D1E61117C00D3F53A /* K BlenderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C5C0AE11E61117C00D3F53A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = YUAN;
+				TargetAttributes = {
+					1C5C0AE81E61117C00D3F53A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6Z983J96G6;
+						ProvisioningStyle = Automatic;
+					};
+					1C5C0B011E61117C00D3F53A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6Z983J96G6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1C5C0AE81E61117C00D3F53A;
+					};
+					1C5C0B0C1E61117C00D3F53A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6Z983J96G6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1C5C0AE81E61117C00D3F53A;
+					};
+				};
+			};
+			buildConfigurationList = 1C5C0AE41E61117C00D3F53A /* Build configuration list for PBXProject "K Blender" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C5C0AE01E61117C00D3F53A;
+			productRefGroup = 1C5C0AEA1E61117C00D3F53A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C5C0AE81E61117C00D3F53A /* K Blender */,
+				1C5C0B011E61117C00D3F53A /* K BlenderTests */,
+				1C5C0B0C1E61117C00D3F53A /* K BlenderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C5C0AE71E61117C00D3F53A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5C0AFC1E61117C00D3F53A /* LaunchScreen.storyboard in Resources */,
+				1C5C0AF91E61117C00D3F53A /* Assets.xcassets in Resources */,
+				1C5C0AF71E61117C00D3F53A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5C0B001E61117C00D3F53A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5C0B0B1E61117C00D3F53A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		986B121B43C68A4A030C22CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-K Blender/Pods-K Blender-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0B02027EC53A298D33D10B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F5DFCEC143813D2098784F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-K Blender/Pods-K Blender-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C5C0AE51E61117C00D3F53A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5C0B2C1E611D2700D3F53A /* AblumTool.m in Sources */,
+				1C5C0B371E61E1A000D3F53A /* SelectedAlbumView.m in Sources */,
+				1C5C0AF11E61117C00D3F53A /* AppDelegate.m in Sources */,
+				1C5C0B301E61D44700D3F53A /* PicCollectionViewCell.m in Sources */,
+				1C5C0B221E611B3000D3F53A /* ViewController.m in Sources */,
+				1C5C0AEE1E61117C00D3F53A /* main.m in Sources */,
+				95E218911F305E94001B294C /* SelectedAlbumCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5C0AFE1E61117C00D3F53A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5C0B071E61117C00D3F53A /* K_BlenderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5C0B091E61117C00D3F53A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C5C0B121E61117C00D3F53A /* K_BlenderUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C5C0B041E61117C00D3F53A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C5C0AE81E61117C00D3F53A /* K Blender */;
+			targetProxy = 1C5C0B031E61117C00D3F53A /* PBXContainerItemProxy */;
+		};
+		1C5C0B0F1E61117C00D3F53A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C5C0AE81E61117C00D3F53A /* K Blender */;
+			targetProxy = 1C5C0B0E1E61117C00D3F53A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1C5C0AF51E61117C00D3F53A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C5C0AF61E61117C00D3F53A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1C5C0AFA1E61117C00D3F53A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C5C0AFB1E61117C00D3F53A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C5C0B141E61117C00D3F53A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1C5C0B151E61117C00D3F53A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C5C0B171E61117C00D3F53A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7F29C01DFB134FFDF062D66 /* Pods-K Blender.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6Z983J96G6;
+				INFOPLIST_FILE = "K Blender/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "test.K-Blender";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1C5C0B181E61117C00D3F53A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E98F409DEAA3BF1CB40DA4F /* Pods-K Blender.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6Z983J96G6;
+				INFOPLIST_FILE = "K Blender/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "test.K-Blender";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1C5C0B1A1E61117C00D3F53A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6Z983J96G6;
+				INFOPLIST_FILE = "K BlenderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "duodian.K-BlenderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/K Blender.app/K Blender";
+			};
+			name = Debug;
+		};
+		1C5C0B1B1E61117C00D3F53A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6Z983J96G6;
+				INFOPLIST_FILE = "K BlenderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "duodian.K-BlenderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/K Blender.app/K Blender";
+			};
+			name = Release;
+		};
+		1C5C0B1D1E61117C00D3F53A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6Z983J96G6;
+				INFOPLIST_FILE = "K BlenderUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "duodian.K-BlenderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "K Blender";
+			};
+			name = Debug;
+		};
+		1C5C0B1E1E61117C00D3F53A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6Z983J96G6;
+				INFOPLIST_FILE = "K BlenderUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "duodian.K-BlenderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "K Blender";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C5C0AE41E61117C00D3F53A /* Build configuration list for PBXProject "K Blender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C5C0B141E61117C00D3F53A /* Debug */,
+				1C5C0B151E61117C00D3F53A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C5C0B161E61117C00D3F53A /* Build configuration list for PBXNativeTarget "K Blender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C5C0B171E61117C00D3F53A /* Debug */,
+				1C5C0B181E61117C00D3F53A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C5C0B191E61117C00D3F53A /* Build configuration list for PBXNativeTarget "K BlenderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C5C0B1A1E61117C00D3F53A /* Debug */,
+				1C5C0B1B1E61117C00D3F53A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C5C0B1C1E61117C00D3F53A /* Build configuration list for PBXNativeTarget "K BlenderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C5C0B1D1E61117C00D3F53A /* Debug */,
+				1C5C0B1E1E61117C00D3F53A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C5C0AE11E61117C00D3F53A /* Project object */;
+}
