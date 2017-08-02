@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U0A-W1-gnq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U0A-W1-gnq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +24,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qD-eE-dRV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZv-hO-dwV">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZv-hO-dwV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVt-fq-exf">
@@ -53,6 +53,9 @@
                                             <constraint firstAttribute="height" constant="40" id="3hb-MM-aRH"/>
                                         </constraints>
                                     </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-gN-YR3">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    </scrollView>
                                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUy-Nq-X0L">
                                         <rect key="frame" x="159" y="188" width="56" height="6"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,6 +67,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YIz-gN-YR3" secondAttribute="trailing" id="46l-R1-quh"/>
                                     <constraint firstAttribute="bottom" secondItem="NVt-fq-exf" secondAttribute="bottom" id="DzQ-Vn-ufk"/>
                                     <constraint firstAttribute="trailing" secondItem="NnI-gX-M5q" secondAttribute="trailing" id="GYI-zg-9sU"/>
                                     <constraint firstAttribute="trailing" secondItem="NVt-fq-exf" secondAttribute="trailing" id="Hvg-SB-oPk"/>
@@ -71,6 +75,9 @@
                                     <constraint firstAttribute="bottom" secondItem="sUy-Nq-X0L" secondAttribute="bottom" constant="6" id="LKD-Rj-crj"/>
                                     <constraint firstItem="sUy-Nq-X0L" firstAttribute="centerX" secondItem="cZv-hO-dwV" secondAttribute="centerX" id="LS0-5L-ngw"/>
                                     <constraint firstAttribute="height" constant="200" id="PNs-qf-yAZ"/>
+                                    <constraint firstItem="NnI-gX-M5q" firstAttribute="top" secondItem="YIz-gN-YR3" secondAttribute="bottom" id="UM1-Qm-L6e"/>
+                                    <constraint firstItem="YIz-gN-YR3" firstAttribute="leading" secondItem="cZv-hO-dwV" secondAttribute="leading" id="YUz-Sl-VMe"/>
+                                    <constraint firstItem="YIz-gN-YR3" firstAttribute="top" secondItem="cZv-hO-dwV" secondAttribute="top" id="eUt-v5-4IU"/>
                                     <constraint firstItem="NnI-gX-M5q" firstAttribute="leading" secondItem="cZv-hO-dwV" secondAttribute="leading" id="fCT-eK-sJX"/>
                                     <constraint firstAttribute="bottom" secondItem="NnI-gX-M5q" secondAttribute="bottom" id="gc7-6N-7UV"/>
                                     <constraint firstItem="NVt-fq-exf" firstAttribute="leading" secondItem="cZv-hO-dwV" secondAttribute="leading" id="lbO-Nv-ogh"/>
@@ -159,12 +166,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XeT-Sp-WHP"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="allAlbumBtn" destination="XFD-4h-MG6" id="fzy-hV-hWV"/>
                         <outlet property="bottomToolBar" destination="Uap-Cp-VCm" id="opL-nm-kM8"/>
+                        <outlet property="contentScroll" destination="YIz-gN-YR3" id="8PM-fV-l7F"/>
                         <outlet property="panHoldControl" destination="NnI-gX-M5q" id="4b8-sn-5Lq"/>
                         <outlet property="recentlyBtn" destination="2yx-uz-P7L" id="cSl-dh-gPn"/>
                         <outlet property="scrollView" destination="5qD-eE-dRV" id="jl8-Lu-cAb"/>

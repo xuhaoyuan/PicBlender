@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3600A81F320F11005FB904 /* ImagePanNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3600A71F320F11005FB904 /* ImagePanNodeView.m */; };
 		1C5C0AEE1E61117C00D3F53A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0AED1E61117C00D3F53A /* main.m */; };
 		1C5C0AF11E61117C00D3F53A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0AF01E61117C00D3F53A /* AppDelegate.m */; };
 		1C5C0AF71E61117C00D3F53A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5C0AF51E61117C00D3F53A /* Main.storyboard */; };
@@ -18,6 +19,9 @@
 		1C5C0B2C1E611D2700D3F53A /* AblumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B2B1E611D2700D3F53A /* AblumTool.m */; };
 		1C5C0B301E61D44700D3F53A /* PicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B2F1E61D44700D3F53A /* PicCollectionViewCell.m */; };
 		1C5C0B371E61E1A000D3F53A /* SelectedAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0B361E61E1A000D3F53A /* SelectedAlbumView.m */; };
+		1CAF13201F30C02100BED8FF /* AssetScrollModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF131F1F30C02100BED8FF /* AssetScrollModel.m */; };
+		1CAF13231F30C26400BED8FF /* ImageNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF13221F30C26400BED8FF /* ImageNodeView.m */; };
+		1CAF13261F30C56F00BED8FF /* UIScrollView+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF13251F30C56F00BED8FF /* UIScrollView+YYAdd.m */; };
 		44E31A3607E1D2C34071EB20 /* libPods-K Blender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF205F3454104232825B0BC /* libPods-K Blender.a */; };
 		95E218911F305E94001B294C /* SelectedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E218901F305E94001B294C /* SelectedAlbumCell.m */; };
 /* End PBXBuildFile section */
@@ -40,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C3600A61F320F11005FB904 /* ImagePanNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePanNodeView.h; sourceTree = "<group>"; };
+		1C3600A71F320F11005FB904 /* ImagePanNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePanNodeView.m; sourceTree = "<group>"; };
 		1C5C0AE91E61117C00D3F53A /* K Blender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K Blender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5C0AED1E61117C00D3F53A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C5C0AEF1E61117C00D3F53A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,6 +69,12 @@
 		1C5C0B341E61D6BE00D3F53A /* UI_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI_Header.h; sourceTree = "<group>"; };
 		1C5C0B351E61E1A000D3F53A /* SelectedAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedAlbumView.h; sourceTree = "<group>"; };
 		1C5C0B361E61E1A000D3F53A /* SelectedAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedAlbumView.m; sourceTree = "<group>"; };
+		1CAF131E1F30C02100BED8FF /* AssetScrollModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetScrollModel.h; sourceTree = "<group>"; };
+		1CAF131F1F30C02100BED8FF /* AssetScrollModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetScrollModel.m; sourceTree = "<group>"; };
+		1CAF13211F30C26400BED8FF /* ImageNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNodeView.h; sourceTree = "<group>"; };
+		1CAF13221F30C26400BED8FF /* ImageNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNodeView.m; sourceTree = "<group>"; };
+		1CAF13241F30C56F00BED8FF /* UIScrollView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+YYAdd.h"; sourceTree = "<group>"; };
+		1CAF13251F30C56F00BED8FF /* UIScrollView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+YYAdd.m"; sourceTree = "<group>"; };
 		95E2188F1F305E94001B294C /* SelectedAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedAlbumCell.h; sourceTree = "<group>"; };
 		95E218901F305E94001B294C /* SelectedAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedAlbumCell.m; sourceTree = "<group>"; };
 		9E98F409DEAA3BF1CB40DA4F /* Pods-K Blender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-K Blender.release.xcconfig"; path = "Pods/Target Support Files/Pods-K Blender/Pods-K Blender.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +175,7 @@
 		1C5C0B1F1E611B3000D3F53A /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				1CAF131D1F30C00B00BED8FF /* Model */,
 				1C5C0B2D1E611E6D00D3F53A /* View */,
 				1C5C0B201E611B3000D3F53A /* ViewController.h */,
 				1C5C0B211E611B3000D3F53A /* ViewController.m */,
@@ -173,6 +186,8 @@
 		1C5C0B231E611B6500D3F53A /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1CAF13241F30C56F00BED8FF /* UIScrollView+YYAdd.h */,
+				1CAF13251F30C56F00BED8FF /* UIScrollView+YYAdd.m */,
 				1C5C0B341E61D6BE00D3F53A /* UI_Header.h */,
 				1C5C0B2A1E611D2700D3F53A /* AblumTool.h */,
 				1C5C0B2B1E611D2700D3F53A /* AblumTool.m */,
@@ -189,8 +204,21 @@
 				1C5C0B361E61E1A000D3F53A /* SelectedAlbumView.m */,
 				95E2188F1F305E94001B294C /* SelectedAlbumCell.h */,
 				95E218901F305E94001B294C /* SelectedAlbumCell.m */,
+				1CAF13211F30C26400BED8FF /* ImageNodeView.h */,
+				1CAF13221F30C26400BED8FF /* ImageNodeView.m */,
+				1C3600A61F320F11005FB904 /* ImagePanNodeView.h */,
+				1C3600A71F320F11005FB904 /* ImagePanNodeView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1CAF131D1F30C00B00BED8FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CAF131E1F30C02100BED8FF /* AssetScrollModel.h */,
+				1CAF131F1F30C02100BED8FF /* AssetScrollModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		434BA4EAED4AD12E7239EFD5 /* Frameworks */ = {
@@ -402,8 +430,12 @@
 				1C5C0AF11E61117C00D3F53A /* AppDelegate.m in Sources */,
 				1C5C0B301E61D44700D3F53A /* PicCollectionViewCell.m in Sources */,
 				1C5C0B221E611B3000D3F53A /* ViewController.m in Sources */,
+				1CAF13201F30C02100BED8FF /* AssetScrollModel.m in Sources */,
 				1C5C0AEE1E61117C00D3F53A /* main.m in Sources */,
 				95E218911F305E94001B294C /* SelectedAlbumCell.m in Sources */,
+				1CAF13231F30C26400BED8FF /* ImageNodeView.m in Sources */,
+				1CAF13261F30C56F00BED8FF /* UIScrollView+YYAdd.m in Sources */,
+				1C3600A81F320F11005FB904 /* ImagePanNodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

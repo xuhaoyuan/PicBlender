@@ -12,6 +12,11 @@
 #import "UI_Header.h"
 #import "SelectedAlbumView.h"
 #import <Masonry.h>
+#import "AssetScrollModel.h"
+#import "ImageNodeView.h"
+#import "UIScrollView+YYAdd.h"
+#import "ImagePanNodeView.h"
+
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UIView *topSelectedView;
@@ -42,6 +47,10 @@
 @property (nonatomic, assign) CGRect panRect;
 @property (nonatomic, assign) UIRectEdge rectEdge;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *contentScroll;
+
+@property (nonatomic, strong) NSMutableArray <ImageNodeView *>*ScrollArray;
+
 @end
 
 @implementation ViewController
@@ -57,7 +66,7 @@
     self.scrollView.contentSize = CGSizeMake(W_SCREEN * 2, H_SCREEN);
     self.scrollView.pagingEnabled = YES;
     
-    
+    self.contentScroll.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
     
     UIPanGestureRecognizer *ges = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGes:)];
     
@@ -94,10 +103,14 @@
     
     [self.nearlyListArray addObjectsFromArray:[[AblumTool sharePhotoTool] getAssetsInAssetCollection:self.nearlyAssetCollection ascending:YES]];
     [self.nearlyCollectionView reloadData];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+- (BOOL)prefersStatusBarHidden{
+    return YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -170,11 +183,11 @@
             self.selectedViewHeight.constant = H_SCREEN;
         }
         
-//        if (self.selectedViewHeight.constant > (200 + H_SCREEN)/2) {
-//            self.selectedViewHeight.constant = H_SCREEN;
-//        }else{
-//            self.selectedViewHeight.constant = 200;
-//        }
+        //        if (self.selectedViewHeight.constant > (200 + H_SCREEN)/2) {
+        //            self.selectedViewHeight.constant = H_SCREEN;
+        //        }else{
+        //            self.selectedViewHeight.constant = 200;
+        //        }
         
         
         [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0.8
@@ -199,7 +212,75 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 2;
 }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (collectionView == _nearlyCollectionView) {
+        
+    }else{
+        PHAsset *asset = _dataArr[indexPath.row];
+        [self addNewImage:asset];
+    }
+}
 
+- (void)addNewImage:(PHAsset *)asset{
+    __block  BOOL alreadyHave = NO;
+    [self.ScrollArray enumerateObjectsUsingBlock:^(ImageNodeView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.assetModel.asset.localIdentifier isEqualToString:asset.localIdentifier]) {
+            alreadyHave = YES;
+        }
+    }];
+    if (!alreadyHave) {
+        AssetScrollModel *model = [[AssetScrollModel alloc] init];
+        model.asset = asset;
+        ImageNodeView *nodeView = [[ImageNodeView alloc] init];
+        nodeView.assetModel = model;
+        [self.ScrollArray addObject:nodeView];
+        [self renderToScrollView];
+    }
+}
+
+
+- (void)renderToScrollView{
+    __block float maxOriginY = 0;
+    __block ImageNodeView *beforeNodeView = nil;
+    
+    CGSize size = self.contentScroll.frame.size;
+    
+    [self.ScrollArray enumerateObjectsUsingBlock:^(ImageNodeView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        ImageNodeView *nodeView = obj;
+        if (obj) {
+            nodeView.beforeNodeView = beforeNodeView;
+            beforeNodeView.afterNodeView = nodeView;
+        }
+        nodeView.superVC = self;
+        if (CGRectEqualToRect(nodeView.currentRect, CGRectZero)) {
+            CGRect rect = CGRectMake(0, maxOriginY, size.width,100);
+            nodeView.frame = rect;
+            nodeView.currentRect = rect;
+        }
+        if (!nodeView.superview) {
+            [self.contentScroll addSubview:nodeView];
+        }
+        beforeNodeView = obj;
+        maxOriginY = CGRectGetMaxY(nodeView.frame);
+    }];
+    self.contentScroll.contentSize = CGSizeMake(size.width, maxOriginY);
+    [self.contentScroll scrollToBottomAnimated:YES];
+}
+
+
+- (void)updateSubNodeLayout{
+    __block float maxOriginY = 0;
+    [self.ScrollArray enumerateObjectsUsingBlock:^(ImageNodeView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        ImageNodeView *nodeView = obj;
+        nodeView.superVC = self;
+        if (obj.currentRect.origin.y != maxOriginY) {
+            obj.currentRect = CGRectMake(0, maxOriginY, obj.currentRect.size.width, obj.currentRect.size.height);
+            obj.frame = obj.currentRect;
+        }
+        maxOriginY = CGRectGetMaxY(nodeView.frame);
+    }];
+    self.contentScroll.contentSize = CGSizeMake(0, maxOriginY);
+}
 
 
 - (void)addAlbumListView{
@@ -266,7 +347,7 @@
                             [self.view layoutIfNeeded];
                             
                         } completion:^(BOOL finished) {
-                    
+                            
                         }];
 }
 - (void)setShowAreaInsets:(UIEdgeInsets)showAreaInsets{
@@ -311,7 +392,7 @@
         [_nearlyCollectionView registerClass:[PicCollectionViewCell class] forCellWithReuseIdentifier:@"_nearlyCollectionView"];
         _nearlyCollectionView.alwaysBounceVertical = YES;
         _nearlyCollectionView.bounces = YES;
-        _nearlyCollectionView.allowsMultipleSelection = YES;
+        //        _nearlyCollectionView.allowsMultipleSelection = YES;
     }
     return _nearlyCollectionView;
 }
@@ -324,9 +405,16 @@
         _photoCollectionView.dataSource = self;
         _photoCollectionView.alwaysBounceVertical = YES;
         _photoCollectionView.bounces = YES;
-        _photoCollectionView.allowsMultipleSelection = YES;
+        //        _photoCollectionView.allowsMultipleSelection = YES;
     }
     return _photoCollectionView;
+}
+
+- (NSMutableArray<ImageNodeView *> *)ScrollArray{
+    if (!_ScrollArray) {
+        _ScrollArray = [NSMutableArray new];
+    }
+    return _ScrollArray;
 }
 
 @end
