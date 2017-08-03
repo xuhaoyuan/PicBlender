@@ -11,8 +11,17 @@
 @interface ViewController : UIViewController
 
 
-- (void)updateSubNodeLayout;
 
+- (void) willbeginUpdateScrollListLayout;
+
+
+- (void) updateScrollListLayoutPanTop:(CGFloat)offsety;
+
+- (void) updateScrollListLayoutPanBottom;
+
+- (void) didEndUpdateScrollListLayout;
+
+- (void) updateScrollViewContentOffset;
 
 @end
 

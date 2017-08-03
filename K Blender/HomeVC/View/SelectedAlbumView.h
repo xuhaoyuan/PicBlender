@@ -14,7 +14,9 @@
 
 @property (nonatomic, strong) NSArray <AblumList*>*albumListArray;
 
-- (instancetype)initWithFrame:(CGRect)frame  albumList:(NSArray <AblumList*>*)array reloadData:(void (^)(PHAssetCollection *AssetCollection))callBack;
+- (instancetype)initWithFrame:(CGRect)frame
+                    albumList:(NSArray <AblumList*>*)array
+                   reloadData:(void (^)(PHAssetCollection *AssetCollection))callBack;
 
 - (void)reloadData;
 @end

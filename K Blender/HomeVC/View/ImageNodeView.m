@@ -21,6 +21,13 @@
 @property (nonatomic, strong) ImagePanNodeView *beforePanView;
 @property (nonatomic, strong) ImagePanNodeView *afterPanView;
 
+
+@property (nonatomic, assign) CGPoint currentImageCenter;
+@property (nonatomic, strong) CAGradientLayer *topGradientLayer;
+@property (nonatomic, strong) CALayer *maskLayer;
+@property (nonatomic, strong) CAGradientLayer *bomGradientLayer;
+
+
 @end
 
 @implementation ImageNodeView
@@ -47,6 +54,7 @@
             make.edges.mas_equalTo(0);
         }];
         [self.scrollView addSubview:self.imageView];
+//        self.layer.mask = self.maskLayer;
         
         UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGes:)];
         [self.scrollView addGestureRecognizer:tapges];
@@ -79,7 +87,7 @@
                                                          options:option
                                                    resultHandler:^(UIImage * _Nullable image, NSDictionary * _Nullable info) {
                                                        self.imageView.image = image;
-
+                                                       
                                                    }];
     [self.superview addSubview:self.beforePanView];
     [self.beforePanView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,6 +105,22 @@
     
 }
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    CGPoint offset = self.currentImageCenter;
+    offset.y -= self.frame.size.height/2;
+    [self.scrollView setContentOffset:offset];
+    [self layoutSubLayerFrame];
+}
+
+- (void)layoutSubLayerFrame{
+    self.maskLayer.frame = self.bounds;
+    self.topGradientLayer.frame = CGRectMake(0, 0, self.maskLayer.frame.size.width, 30);
+    self.bomGradientLayer.frame = CGRectMake(0,
+                                             self.maskLayer.frame.size.height - 30,
+                                             self.maskLayer.frame.size.width,
+                                             30);
+}
 
 - (void)tapGes:(UITapGestureRecognizer *)ges{
     if (self.beforeNodeView) {
@@ -106,10 +130,13 @@
         [self.afterNodeView setAfterSelected:NO];
     }
     self.selected = !self.selected;
-
+    
 }
 - (void)bottomPan:(UIPanGestureRecognizer *)ges{
     if (ges.state == UIGestureRecognizerStateBegan) {
+        if (self.superVC) {
+            [self.superVC willbeginUpdateScrollListLayout];
+        }
         CGPoint point2 = [ges locationInView:self.superview];
         _beginRect.origin = point2;
         _beginRect.size = self.frame.size;
@@ -119,27 +146,84 @@
         frame.size.height = point.y - _beginRect.origin.y + _beginRect.size.height;
         if (frame.size.width/frame.size.height <= self.assetModel.scale) {
             frame.size.height = self.frame.size.width/self.assetModel.scale;
+        }else if(frame.size.height <= 100){
+            frame.size.height = 100;
+        }else{
+            CGPoint superLocationPoint = [self.superview convertPoint:point toView:self.superVC.view];
+            if (self.superVC.view.frame.size.height - superLocationPoint.y < 44) {
+                [_superVC updateScrollViewContentOffset];
+            }
         }
         self.frame = frame;
         self.currentRect = frame;
-        [_superVC updateSubNodeLayout];
+        [_superVC updateScrollListLayoutPanBottom];
+        
+        
     }else if (ges.state == UIGestureRecognizerStateEnded){
-        
+        if (self.superVC) {
+            [self.superVC didEndUpdateScrollListLayout];
+        }
     }else if (ges.state == UIGestureRecognizerStateCancelled){
-        
+        if (self.superVC) {
+            [self.superVC didEndUpdateScrollListLayout];
+        }
     }else if (ges.state == UIGestureRecognizerStateFailed){
-        
+        if (self.superVC) {
+            [self.superVC didEndUpdateScrollListLayout];
+        }
     }
 }
 - (void)topPan:(UIPanGestureRecognizer *)ges{
-    if (self.beforeNodeView) {
-        [self.beforeNodeView bottomPan:ges];
+    //    if (self.beforeNodeView) {
+    //        [self.beforeNodeView bottomPan:ges];
+    //    }
+    if (ges.state == UIGestureRecognizerStateBegan) {
+        if (self.superVC) {
+            [self.superVC willbeginUpdateScrollListLayout];
+        }
+        CGPoint point2 = [ges locationInView:self.superVC.view];
+        _beginRect.origin = point2;
+        _beginRect.size = self.frame.size;
+    }else if (ges.state == UIGestureRecognizerStateChanged){
+        CGPoint point = [ges locationInView:self.superVC.view];
+        CGRect frame = self.frame;
+        CGFloat spacing = frame.size.height;
+        frame.size.height = _beginRect.origin.y - point.y   + _beginRect.size.height;
+        if (frame.size.width/frame.size.height <= self.assetModel.scale) {
+            frame.size.height = self.frame.size.width/self.assetModel.scale;
+        }else if(frame.size.height <= 100){
+            frame.size.height = 100;
+        }else{
+            CGPoint superLocationPoint = [self.superview convertPoint:point toView:self.superVC.view];
+            if (self.superVC.view.frame.size.height - superLocationPoint.y < 44) {
+                [_superVC updateScrollViewContentOffset];
+            }
+        }
+        self.frame = frame;
+        self.currentRect = frame;
+        spacing = frame.size.height - spacing;
+        [_superVC updateScrollListLayoutPanTop:spacing];
+        
+        
+    }else if (ges.state == UIGestureRecognizerStateEnded){
+        if (self.superVC) {
+            [self.superVC didEndUpdateScrollListLayout];
+        }
+    }else if (ges.state == UIGestureRecognizerStateCancelled){
+        if (self.superVC) {
+            [self.superVC didEndUpdateScrollListLayout];
+        }
+    }else if (ges.state == UIGestureRecognizerStateFailed){
+        if (self.superVC) {
+            [self.superVC didEndUpdateScrollListLayout];
+        }
     }
 }
 
+
 - (void)setSelected:(BOOL)selected{
     _selected = selected;
-
+    
     
     if (_selected) {
         
@@ -154,7 +238,7 @@
         }];
     }else{
         self.scrollView.scrollEnabled = NO;
-      
+        
         [UIView animateWithDuration:0.3 animations:^{
             self.beforePanView.alpha = 0;
             self.afterPanView.alpha = 0;
@@ -162,7 +246,7 @@
             self.beforePanView.hidden = YES;
             self.afterPanView.hidden = YES;
         }];
-
+        
     }
     
 }
@@ -187,6 +271,11 @@
     _assetModel = assetModel;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint offset = scrollView.contentOffset;
+    offset.y += self.frame.size.height/2;
+    self.currentImageCenter = offset;
+}
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     return self.imageView;
@@ -237,4 +326,38 @@
     }
     return _afterPanView;
 }
+- (CAGradientLayer *)topGradientLayer{
+    if (!_topGradientLayer) {
+        _topGradientLayer = [[CAGradientLayer alloc] init];
+        _topGradientLayer.locations = @[@0,@1];
+        _topGradientLayer.startPoint = CGPointMake(0.5, 0);
+        _topGradientLayer.endPoint = CGPointMake(0.5, 1);
+        _topGradientLayer.colors = @[(id)[UIColor clearColor].CGColor,
+                                     (id)[UIColor whiteColor].CGColor];
+    }
+    return _topGradientLayer;
+}
+- (CAGradientLayer *)bomGradientLayer{
+    if (!_bomGradientLayer) {
+        _bomGradientLayer = [[CAGradientLayer alloc] init];
+        _bomGradientLayer.locations = @[@0,@1];
+        _bomGradientLayer.startPoint = CGPointMake(0.5, 0);
+        _bomGradientLayer.endPoint = CGPointMake(0.5, 1);
+        _bomGradientLayer.colors = @[(id)[UIColor whiteColor].CGColor,
+                                     (id)[UIColor clearColor].CGColor];
+        
+    }
+    return _bomGradientLayer;
+}
+- (CALayer *)maskLayer{
+    if (!_maskLayer) {
+        _maskLayer = [[CALayer alloc] init];
+        _maskLayer.backgroundColor = [UIColor whiteColor].CGColor;
+        [_maskLayer addSublayer:self.topGradientLayer];
+        [_maskLayer addSublayer:self.bomGradientLayer];
+    }
+    return _maskLayer;
+}
+
+
 @end

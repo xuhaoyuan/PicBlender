@@ -51,6 +51,8 @@
 
 @property (nonatomic, strong) NSMutableArray <ImageNodeView *>*ScrollArray;
 
+@property (nonatomic, assign) CGPoint topPanDefaultOffset;
+
 @end
 
 @implementation ViewController
@@ -214,7 +216,8 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == _nearlyCollectionView) {
-        
+        PHAsset *asset = _nearlyListArray[indexPath.row];
+        [self addNewImage:asset];
     }else{
         PHAsset *asset = _dataArr[indexPath.row];
         [self addNewImage:asset];
@@ -258,7 +261,11 @@
             nodeView.currentRect = rect;
         }
         if (!nodeView.superview) {
+            nodeView.alpha = 0;
             [self.contentScroll addSubview:nodeView];
+            [UIView animateWithDuration:0.6 animations:^{
+                nodeView.alpha = 1;
+            }];
         }
         beforeNodeView = obj;
         maxOriginY = CGRectGetMaxY(nodeView.frame);
@@ -267,8 +274,17 @@
     [self.contentScroll scrollToBottomAnimated:YES];
 }
 
+- (void)willbeginUpdateScrollListLayout{
+    self.contentScroll.contentInset = UIEdgeInsetsMake(H_SCREEN, 0, H_SCREEN, 0);
+}
 
-- (void)updateSubNodeLayout{
+- (void)updateScrollListLayoutPanTop:(CGFloat)offsety{
+    [self updateScrollListLayoutPanBottom];
+    [self.contentScroll setContentOffset:CGPointMake(self.contentScroll.contentOffset.x,
+                                                     self.contentScroll.contentOffset.y + offsety)];
+}
+
+- (void)updateScrollListLayoutPanBottom{
     __block float maxOriginY = 0;
     [self.ScrollArray enumerateObjectsUsingBlock:^(ImageNodeView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ImageNodeView *nodeView = obj;
@@ -280,6 +296,29 @@
         maxOriginY = CGRectGetMaxY(nodeView.frame);
     }];
     self.contentScroll.contentSize = CGSizeMake(0, maxOriginY);
+}
+
+- (void)didEndUpdateScrollListLayout{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.contentScroll.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
+    }];
+}
+
+- (void)updateScrollViewContentOffset{
+    CGPoint off = self.contentScroll.contentOffset;
+    off.y = self.contentScroll.contentSize.height - self.contentScroll.bounds.size.height + self.contentScroll.contentInset.bottom;
+    
+    if (self.contentScroll.contentOffset.y < off.y) {
+        [UIView animateWithDuration:0.1 animations:^{
+            [self.contentScroll setContentOffset:CGPointMake(self.contentScroll.contentOffset.x,
+                                                             self.contentScroll.contentOffset.y + 1)];
+        }];
+    }else{
+        [UIView animateWithDuration:0.1 animations:^{
+            [self.contentScroll setContentOffset:off];
+        }];
+    }
+
 }
 
 
