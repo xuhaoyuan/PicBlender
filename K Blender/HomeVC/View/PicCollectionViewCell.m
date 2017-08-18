@@ -53,7 +53,7 @@
     _asset = asset;
     
     CGSize size = [self getSizeWithAsset:asset];
-    [self requestImageForAsset:asset size:size resizeMode:PHImageRequestOptionsResizeModeFast];
+    [self requestImageForAsset:asset size:size resizeMode:PHImageRequestOptionsResizeModeNone];
     
 }
 - (void)requestImageForAsset:(PHAsset *)asset size:(CGSize)size resizeMode:(PHImageRequestOptionsResizeMode)resizeMode{

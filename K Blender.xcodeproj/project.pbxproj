@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C16CA171F3476DF0017245D /* UIScrollView+Capture.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C16CA161F3476DF0017245D /* UIScrollView+Capture.m */; };
+		1C16CA1A1F3477ED0017245D /* UIView+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C16CA191F3477ED0017245D /* UIView+YYAdd.m */; };
 		1C3600A81F320F11005FB904 /* ImagePanNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3600A71F320F11005FB904 /* ImagePanNodeView.m */; };
 		1C5C0AEE1E61117C00D3F53A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0AED1E61117C00D3F53A /* main.m */; };
 		1C5C0AF11E61117C00D3F53A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5C0AF01E61117C00D3F53A /* AppDelegate.m */; };
@@ -44,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C16CA151F3476DF0017245D /* UIScrollView+Capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Capture.h"; sourceTree = "<group>"; };
+		1C16CA161F3476DF0017245D /* UIScrollView+Capture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Capture.m"; sourceTree = "<group>"; };
+		1C16CA181F3477ED0017245D /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
+		1C16CA191F3477ED0017245D /* UIView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYAdd.m"; sourceTree = "<group>"; };
 		1C3600A61F320F11005FB904 /* ImagePanNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePanNodeView.h; sourceTree = "<group>"; };
 		1C3600A71F320F11005FB904 /* ImagePanNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePanNodeView.m; sourceTree = "<group>"; };
 		1C5C0AE91E61117C00D3F53A /* K Blender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K Blender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +192,10 @@
 		1C5C0B231E611B6500D3F53A /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1C16CA181F3477ED0017245D /* UIView+YYAdd.h */,
+				1C16CA191F3477ED0017245D /* UIView+YYAdd.m */,
+				1C16CA151F3476DF0017245D /* UIScrollView+Capture.h */,
+				1C16CA161F3476DF0017245D /* UIScrollView+Capture.m */,
 				1CAF13241F30C56F00BED8FF /* UIScrollView+YYAdd.h */,
 				1CAF13251F30C56F00BED8FF /* UIScrollView+YYAdd.m */,
 				1C5C0B341E61D6BE00D3F53A /* UI_Header.h */,
@@ -430,9 +440,11 @@
 				1C5C0AF11E61117C00D3F53A /* AppDelegate.m in Sources */,
 				1C5C0B301E61D44700D3F53A /* PicCollectionViewCell.m in Sources */,
 				1C5C0B221E611B3000D3F53A /* ViewController.m in Sources */,
+				1C16CA1A1F3477ED0017245D /* UIView+YYAdd.m in Sources */,
 				1CAF13201F30C02100BED8FF /* AssetScrollModel.m in Sources */,
 				1C5C0AEE1E61117C00D3F53A /* main.m in Sources */,
 				95E218911F305E94001B294C /* SelectedAlbumCell.m in Sources */,
+				1C16CA171F3476DF0017245D /* UIScrollView+Capture.m in Sources */,
 				1CAF13231F30C26400BED8FF /* ImageNodeView.m in Sources */,
 				1CAF13261F30C56F00BED8FF /* UIScrollView+YYAdd.m in Sources */,
 				1C3600A81F320F11005FB904 /* ImagePanNodeView.m in Sources */,

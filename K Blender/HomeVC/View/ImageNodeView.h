@@ -27,6 +27,9 @@
 @property (nonatomic, assign) BOOL afterSelected;
 
 
+@property (nonatomic, assign) BOOL alphaState;
+
+
 - (void)bottomPan:(UIPanGestureRecognizer *)ges;
 
 

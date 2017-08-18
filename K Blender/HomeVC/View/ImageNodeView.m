@@ -23,9 +23,13 @@
 
 
 @property (nonatomic, assign) CGPoint currentImageCenter;
-@property (nonatomic, strong) CAGradientLayer *topGradientLayer;
+
 @property (nonatomic, strong) CALayer *maskLayer;
+@property (nonatomic, strong) CAGradientLayer *topGradientLayer;
+@property (nonatomic, strong) CALayer *middleLayer;
 @property (nonatomic, strong) CAGradientLayer *bomGradientLayer;
+
+@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
 
 @end
@@ -54,11 +58,15 @@
             make.edges.mas_equalTo(0);
         }];
         [self.scrollView addSubview:self.imageView];
-//        self.layer.mask = self.maskLayer;
+        self.layer.mask = self.maskLayer;
         
         UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGes:)];
         [self.scrollView addGestureRecognizer:tapges];
         
+        [self addSubview:self.indicatorView];
+        [self.indicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.mas_equalTo(0);
+        }];
     }
     return self;
 }
@@ -80,14 +88,14 @@
     option.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;//控制照片质量
     option.networkAccessAllowed = YES;
     //param：targetSize 即你想要的图片尺寸，若想要原尺寸则可输入PHImageManagerMaximumSize
-    
+    [self.indicatorView startAnimating];
     [[PHCachingImageManager defaultManager] requestImageForAsset:_assetModel.asset
                                                       targetSize:self.imageView.frame.size
                                                      contentMode:PHImageContentModeAspectFit
                                                          options:option
                                                    resultHandler:^(UIImage * _Nullable image, NSDictionary * _Nullable info) {
                                                        self.imageView.image = image;
-                                                       
+                                                       [self.indicatorView stopAnimating];
                                                    }];
     [self.superview addSubview:self.beforePanView];
     [self.beforePanView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -116,6 +124,11 @@
 - (void)layoutSubLayerFrame{
     self.maskLayer.frame = self.bounds;
     self.topGradientLayer.frame = CGRectMake(0, 0, self.maskLayer.frame.size.width, 30);
+    self.middleLayer.frame = CGRectMake(0,
+                                        30,
+                                        self.maskLayer.frame.size.width,
+                                        self.maskLayer.frame.size.height - 60);
+    
     self.bomGradientLayer.frame = CGRectMake(0,
                                              self.maskLayer.frame.size.height - 30,
                                              self.maskLayer.frame.size.width,
@@ -220,6 +233,20 @@
     }
 }
 
+- (void)setAlphaState:(BOOL)alphaState{
+    _alphaState = alphaState;
+    if (alphaState) {
+        self.backgroundColor = [UIColor whiteColor];
+        [self.layer addSublayer:self.maskLayer];
+    }else{
+        self.backgroundColor = [UIColor clearColor];
+        if (_maskLayer && _maskLayer.superlayer) {
+            [_maskLayer removeFromSuperlayer];
+        }
+        _maskLayer = nil;
+        
+    }
+}
 
 - (void)setSelected:(BOOL)selected{
     _selected = selected;
@@ -332,32 +359,49 @@
         _topGradientLayer.locations = @[@0,@1];
         _topGradientLayer.startPoint = CGPointMake(0.5, 0);
         _topGradientLayer.endPoint = CGPointMake(0.5, 1);
-        _topGradientLayer.colors = @[(id)[UIColor clearColor].CGColor,
-                                     (id)[UIColor whiteColor].CGColor];
+        _topGradientLayer.colors = @[(id)[UIColor whiteColor].CGColor,
+                                     (id)[UIColor clearColor].CGColor];
+        
     }
     return _topGradientLayer;
 }
+
 - (CAGradientLayer *)bomGradientLayer{
     if (!_bomGradientLayer) {
         _bomGradientLayer = [[CAGradientLayer alloc] init];
         _bomGradientLayer.locations = @[@0,@1];
         _bomGradientLayer.startPoint = CGPointMake(0.5, 0);
         _bomGradientLayer.endPoint = CGPointMake(0.5, 1);
-        _bomGradientLayer.colors = @[(id)[UIColor whiteColor].CGColor,
-                                     (id)[UIColor clearColor].CGColor];
-        
+        _bomGradientLayer.colors = @[(id)[UIColor clearColor].CGColor,
+                                     (id)[UIColor whiteColor].CGColor];
     }
     return _bomGradientLayer;
 }
+
 - (CALayer *)maskLayer{
     if (!_maskLayer) {
         _maskLayer = [[CALayer alloc] init];
-        _maskLayer.backgroundColor = [UIColor whiteColor].CGColor;
+        _maskLayer.backgroundColor = [UIColor clearColor].CGColor;
         [_maskLayer addSublayer:self.topGradientLayer];
         [_maskLayer addSublayer:self.bomGradientLayer];
+        [_maskLayer addSublayer:self.middleLayer];
     }
     return _maskLayer;
 }
 
+- (CALayer *)middleLayer{
+    if (!_middleLayer) {
+        _middleLayer = [[CALayer alloc] init];
+        _middleLayer.backgroundColor = [UIColor clearColor].CGColor;
+    }
+    return _middleLayer;
+}
+
+- (UIActivityIndicatorView *)indicatorView{
+    if (!_indicatorView) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    }
+    return _indicatorView;
+}
 
 @end

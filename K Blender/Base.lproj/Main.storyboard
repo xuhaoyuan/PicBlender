@@ -48,22 +48,54 @@
                                     </visualEffectView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-gX-M5q">
                                         <rect key="frame" x="0.0" y="160" width="375" height="40"/>
+                                        <subviews>
+                                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUy-Nq-X0L">
+                                                <rect key="frame" x="159" y="17" width="56" height="6"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="6" id="Jkx-ze-65W"/>
+                                                    <constraint firstAttribute="width" constant="56" id="mPY-tP-AZh"/>
+                                                </constraints>
+                                            </view>
+                                            <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-os-Pnm">
+                                                <rect key="frame" x="315" y="5" width="36" height="30"/>
+                                                <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="17"/>
+                                                <state key="normal" title="save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ESn-y2-Obt"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-AV-SNg">
+                                                <rect key="frame" x="24" y="5" width="49" height="31"/>
+                                                <subviews>
+                                                    <switch hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z3b-Ce-AWU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                        <color key="onTintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="setStyleSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="lgA-fC-vub"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="RUg-os-Pnm" secondAttribute="trailing" constant="24" id="0Bb-PQ-pAR"/>
+                                            <constraint firstItem="RUg-os-Pnm" firstAttribute="top" secondItem="NnI-gX-M5q" secondAttribute="top" constant="5" id="0gA-bG-o36"/>
                                             <constraint firstAttribute="height" constant="40" id="3hb-MM-aRH"/>
+                                            <constraint firstAttribute="bottom" secondItem="sUy-Nq-X0L" secondAttribute="bottom" constant="17" id="HnS-qn-3Ut"/>
+                                            <constraint firstItem="sUy-Nq-X0L" firstAttribute="centerX" secondItem="NnI-gX-M5q" secondAttribute="centerX" id="Lvj-ks-fqa"/>
+                                            <constraint firstItem="sUy-Nq-X0L" firstAttribute="centerY" secondItem="NnI-gX-M5q" secondAttribute="centerY" id="VcT-iM-PfU"/>
+                                            <constraint firstAttribute="bottom" secondItem="RUg-os-Pnm" secondAttribute="bottom" constant="5" id="WUO-ei-8Lh"/>
+                                            <constraint firstItem="sUy-Nq-X0L" firstAttribute="leading" secondItem="X3e-AV-SNg" secondAttribute="trailing" constant="86" id="kdX-VG-awp"/>
+                                            <constraint firstItem="X3e-AV-SNg" firstAttribute="centerY" secondItem="NnI-gX-M5q" secondAttribute="centerY" id="q02-D3-nLV"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-gN-YR3">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-gN-YR3">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                     </scrollView>
-                                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUy-Nq-X0L">
-                                        <rect key="frame" x="159" y="188" width="56" height="6"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="6" id="Jkx-ze-65W"/>
-                                            <constraint firstAttribute="width" constant="56" id="mPY-tP-AZh"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -72,8 +104,6 @@
                                     <constraint firstAttribute="trailing" secondItem="NnI-gX-M5q" secondAttribute="trailing" id="GYI-zg-9sU"/>
                                     <constraint firstAttribute="trailing" secondItem="NVt-fq-exf" secondAttribute="trailing" id="Hvg-SB-oPk"/>
                                     <constraint firstItem="NVt-fq-exf" firstAttribute="top" secondItem="cZv-hO-dwV" secondAttribute="top" id="K6p-qs-mgn"/>
-                                    <constraint firstAttribute="bottom" secondItem="sUy-Nq-X0L" secondAttribute="bottom" constant="6" id="LKD-Rj-crj"/>
-                                    <constraint firstItem="sUy-Nq-X0L" firstAttribute="centerX" secondItem="cZv-hO-dwV" secondAttribute="centerX" id="LS0-5L-ngw"/>
                                     <constraint firstAttribute="height" constant="200" id="PNs-qf-yAZ"/>
                                     <constraint firstItem="NnI-gX-M5q" firstAttribute="top" secondItem="YIz-gN-YR3" secondAttribute="bottom" id="UM1-Qm-L6e"/>
                                     <constraint firstItem="YIz-gN-YR3" firstAttribute="leading" secondItem="cZv-hO-dwV" secondAttribute="leading" id="YUz-Sl-VMe"/>
@@ -175,8 +205,10 @@
                         <outlet property="contentScroll" destination="YIz-gN-YR3" id="8PM-fV-l7F"/>
                         <outlet property="panHoldControl" destination="NnI-gX-M5q" id="4b8-sn-5Lq"/>
                         <outlet property="recentlyBtn" destination="2yx-uz-P7L" id="cSl-dh-gPn"/>
+                        <outlet property="saveBtn" destination="RUg-os-Pnm" id="ZyZ-am-l2g"/>
                         <outlet property="scrollView" destination="5qD-eE-dRV" id="jl8-Lu-cAb"/>
                         <outlet property="selectedViewHeight" destination="PNs-qf-yAZ" id="9iK-y9-9UN"/>
+                        <outlet property="stateSwitch" destination="Z3b-Ce-AWU" id="jDv-3p-vWn"/>
                         <outlet property="tapControl" destination="sUy-Nq-X0L" id="MMY-TO-hkq"/>
                         <outlet property="topSelectedView" destination="cZv-hO-dwV" id="eeT-kp-eRH"/>
                     </connections>

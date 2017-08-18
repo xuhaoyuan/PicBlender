@@ -16,11 +16,15 @@
 #import "ImageNodeView.h"
 #import "UIScrollView+YYAdd.h"
 #import "ImagePanNodeView.h"
+#import "UIScrollView+Capture.h"
+#import "UIView+YYAdd.h"
 
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 @property (weak, nonatomic) IBOutlet UIView *topSelectedView;
 @property (strong, nonatomic) UICollectionView *photoCollectionView;
+@property (weak, nonatomic) IBOutlet UISwitch *stateSwitch;
 @property (strong, nonatomic) UICollectionView *nearlyCollectionView;
 
 @property(nonatomic, strong)NSMutableArray <PHAsset *>*dataArr;
@@ -53,15 +57,24 @@
 
 @property (nonatomic, assign) CGPoint topPanDefaultOffset;
 
+@property (nonatomic, strong) UIImageView *maskImageHoldView;
+@property (nonatomic, assign) CGPoint savePhotoCurrentOffset;
+@property (nonatomic, strong) UIAlertController *alertController;
+
+@property (nonatomic, assign) BOOL blenderState;
+
 @end
 
 @implementation ViewController
 
+
+#define topViewDefaultHeight self.view.frame.size.height * 0.3
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.blenderState = NO;
     self.rectEdge = UIRectEdgeNone;
-    
+    self.selectedViewHeight.constant = topViewDefaultHeight;
     [self.scrollView addSubview:self.photoCollectionView];
     [self.scrollView addSubview:self.nearlyCollectionView];
     
@@ -88,6 +101,48 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAllAlbumList) name:@"applicationDidBecomeActive" object:nil];
     [self addAlbumListView];
     
+}
+- (IBAction)saveBtn:(id)sender {
+    [self.view addSubview:self.maskImageHoldView];
+    self.maskImageHoldView.frame = self.view.bounds;
+    self.maskImageHoldView.image = [self.view snapshotImageAfterScreenUpdates:YES];
+    [self.view bringSubviewToFront:self.maskImageHoldView];
+    self.savePhotoCurrentOffset = self.contentScroll.contentOffset;
+    
+    _alertController = [UIAlertController alertControllerWithTitle:@"wait.." message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [self showDetailViewController:_alertController sender:nil];
+    
+    [self.contentScroll ContentVerticalScrollCapture:nil :^(UIImage *capturedImage) {
+        if (capturedImage) {
+            UIImageWriteToSavedPhotosAlbum(capturedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        }
+        [self.contentScroll setContentOffset:self.savePhotoCurrentOffset];
+        if (self.maskImageHoldView) {
+            [self.maskImageHoldView removeFromSuperview];
+            self.maskImageHoldView = nil;
+        }
+    }];
+    
+}
+- (IBAction)setStyleSwitch:(id)sender {
+    self.blenderState = !self.blenderState;
+    [self renderToScrollView];
+    
+}
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if (_alertController && _alertController.presentingViewController) {
+        [_alertController dismissViewControllerAnimated:YES completion:^{
+            [self showSuccessAlert];
+        }];
+    }else{
+        [self showSuccessAlert];
+    }
+    
+}
+- (void)showSuccessAlert{
+    _alertController = [UIAlertController alertControllerWithTitle:@"success" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [_alertController addAction:[UIAlertAction actionWithTitle:@"done" style:UIAlertActionStyleDefault handler:nil]];
+    [self showDetailViewController:_alertController sender:nil];
 }
 - (void)reloadAllAlbumList{
     [self.albumListArray addObjectsFromArray:[[AblumTool sharePhotoTool] getPhotoAblumList]];
@@ -171,8 +226,8 @@
         }else if(self.selectedViewHeight.constant <= height){
             self.rectEdge = UIRectEdgeBottom;
         }
-        if (height < 200) {
-            height = 200;
+        if (height < topViewDefaultHeight) {
+            height = topViewDefaultHeight;
         }else if (height > H_SCREEN){
             height = H_SCREEN;
         }
@@ -180,7 +235,7 @@
     }else if (pan.state == UIGestureRecognizerStateEnded || pan.state == UIGestureRecognizerStateCancelled){
         
         if (self.rectEdge == UIRectEdgeTop) {
-            self.selectedViewHeight.constant = 200;
+            self.selectedViewHeight.constant = topViewDefaultHeight;
         }else if(self.rectEdge == UIRectEdgeBottom){
             self.selectedViewHeight.constant = H_SCREEN;
         }
@@ -195,8 +250,21 @@
         [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0.8
                             options:UIViewAnimationOptionAllowUserInteraction |UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut animations:^{
                                 [self.view layoutIfNeeded];
+                                if (self.selectedViewHeight.constant == H_SCREEN) {
+                                    self.saveBtn.hidden = NO;
+                                    self.saveBtn.alpha = 1;
+                                    self.stateSwitch.hidden = NO;
+                                    self.stateSwitch.alpha = 1;
+                                }else{
+                                    self.saveBtn.alpha = 0;
+                                    self.stateSwitch.alpha = 0;
+
+                                }
                             } completion:^(BOOL finished) {
-                                
+                                if (self.selectedViewHeight.constant != H_SCREEN) {
+                                    self.saveBtn.hidden = YES;
+                                    self.stateSwitch.hidden = YES;
+                                }
                             }];
         
         
@@ -250,15 +318,18 @@
     
     [self.ScrollArray enumerateObjectsUsingBlock:^(ImageNodeView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ImageNodeView *nodeView = obj;
+        nodeView.alphaState = self.blenderState;
         if (obj) {
             nodeView.beforeNodeView = beforeNodeView;
             beforeNodeView.afterNodeView = nodeView;
         }
         nodeView.superVC = self;
-        if (CGRectEqualToRect(nodeView.currentRect, CGRectZero)) {
-            CGRect rect = CGRectMake(0, maxOriginY, size.width,100);
-            nodeView.frame = rect;
-            nodeView.currentRect = rect;
+        if (CGRectEqualToRect(nodeView.currentRect, CGRectZero) || nodeView.currentRect.origin.y != maxOriginY) {
+            [UIView animateWithDuration:0.3 animations:^{
+                CGRect rect = CGRectMake(0, maxOriginY, size.width,100);
+                nodeView.frame = rect;
+                nodeView.currentRect = rect;
+            }];
         }
         if (!nodeView.superview) {
             nodeView.alpha = 0;
@@ -268,10 +339,14 @@
             }];
         }
         beforeNodeView = obj;
-        maxOriginY = CGRectGetMaxY(nodeView.frame);
+        
+        maxOriginY = CGRectGetMaxY(nodeView.frame) - (self.blenderState ? 10 : 0);
     }];
     self.contentScroll.contentSize = CGSizeMake(size.width, maxOriginY);
-    [self.contentScroll scrollToBottomAnimated:YES];
+    if (self.contentScroll.contentSize.height > self.contentScroll.frame.size.height) {
+        [self.contentScroll scrollToBottomAnimated:YES];
+    }
+    
 }
 
 - (void)willbeginUpdateScrollListLayout{
@@ -318,7 +393,7 @@
             [self.contentScroll setContentOffset:off];
         }];
     }
-
+    
 }
 
 
@@ -454,6 +529,12 @@
         _ScrollArray = [NSMutableArray new];
     }
     return _ScrollArray;
+}
+- (UIImageView *)maskImageHoldView{
+    if (!_maskImageHoldView) {
+        _maskImageHoldView = [[UIImageView alloc] init];
+    }
+    return _maskImageHoldView;
 }
 
 @end
